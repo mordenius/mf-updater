@@ -1,0 +1,11 @@
+/.idea/*
+*.iml
+
+/node_modules/*
+/lib/*
+/config/*
+/temp/*
+/log/*
+
+npm-debug.json
+package-lock.json

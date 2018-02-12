@@ -1,0 +1,26 @@
+{
+  "name": "mf-updater",
+  "version": "0.0.1-alpha",
+  "description": "Early development part of the framework Manufactura",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "babel -d ./lib source/js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mordenius/mf-updater.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mordenius/mf-updater/issues"
+  },
+  "homepage": "https://github.com/mordenius/mf-updater#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-bbt": "0.0.6",
+    "prettier": "^1.10.2"
+  }
+}
