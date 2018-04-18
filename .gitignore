@@ -8,6 +8,7 @@
 /temp/*
 /log/*
 /build/
+/docs/
 
 npm-debug.json
 package-lock.json
