@@ -1,11 +1,13 @@
 /.idea/*
 *.iml
+/.vscode/
 
 /node_modules/*
 /lib/*
 /config/*
 /temp/*
 /log/*
+/build/
 
 npm-debug.json
 package-lock.json
