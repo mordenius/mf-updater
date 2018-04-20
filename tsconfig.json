@@ -1,15 +1,19 @@
 {
 	"compilerOptions": {
-		"module": "es6",
+		"module": "commonjs",
 		"noImplicitAny": false,
 		"removeComments": true,
 		"preserveConstEnums": true,
 		"sourceMap": true,
 		"noEmitOnError": true,
 		"pretty": true,
-		"target": "ES6",
+		"target": "es5",
 		"moduleResolution": "node",
 		"allowSyntheticDefaultImports": true,
+		"strictNullChecks": true,
+		"lib": [
+			"es2015"
+		]
 	},
 	"include": [
 		"source/ts/**/*"
