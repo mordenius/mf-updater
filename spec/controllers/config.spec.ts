@@ -1,36 +1,9 @@
-import { writeFileSync, unlinkSync, rmdirSync, mkdirSync, renameSync } from "fs";
-import Config from "./../../source/ts/controllers/config";
+import { writeFileSync, renameSync } from "fs";
+import { saveConfig, createFiles, removeFiles } from "./../_helpers/helper";
 import { CONFIG_FILE_PATH, CONFIG_PATH, PACKAGE_FILE_PATH } from "./../../source/ts/data/constant";
 import UpdaterError, { CustomErrorCode } from "./../../source/ts/data/exeptions";
 
-const INDENT: number = 2;
-
-const saveConfig: (data: {}) => void = (data: {}): void => {
-	const content: string = JSON.stringify(data, null, INDENT);
-	writeFileSync(CONFIG_FILE_PATH, content, "utf-8");
-};
-
-const createFiles: () => void | never = (): void | never => {
-	try {
-		mkdirSync(CONFIG_PATH);
-		saveConfig({ host: `127.0.0.1`, port: 3000 });
-	} catch (err) {
-		if (err.code === `EEXIST`) {
-			removeFiles();
-			createFiles();
-		} else throw err;
-	}
-};
-
-const removeFiles: () => void = (): void => {
-	try {
-		unlinkSync(CONFIG_FILE_PATH);
-		rmdirSync(CONFIG_PATH);
-	} catch (err) {
-		if (err.code === `ENOENT`) return;
-		else throw err;
-	}
-};
+import Config from "./../../source/ts/controllers/config";
 
 describe("Configuration", () => {
 	const init = Config.init.bind(Config);
