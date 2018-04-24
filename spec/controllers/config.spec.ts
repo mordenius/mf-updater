@@ -45,55 +45,63 @@ describe("Configuration", () => {
 			port: 3000
 		};
 
-		it(`invalid host type`, () => {
+		it(`invalid host type`, async () => {
 			config.host = 1;
 			saveConfig(config);
 
-			expect(init).toThrowError(`Config host must be a string but got '1' with type 'number'`);
+			const result = await init();
+			expect(result[1].message).toEqual(`Config host must be a string but got '1' with type 'number'`);
 		});
 
-		it(`invalid host format`, () => {
+		it(`invalid host format`, async () => {
 			config.host = `127.259.0.1`;
 			saveConfig(config);
 
-			expect(init).toThrowError(`Config host '127.259.0.1' is invalid`);
-			config.host = `127.0.0.1`;
+			const result = await init();
+			expect(result[1].message).toEqual(`Config host '127.259.0.1' is invalid`);
 		});
 
-		it(`invalid port type`, () => {
+		it(`invalid port type`, async () => {
+			config.host = `127.0.0.1`;
 			config.port = `10`;
 			saveConfig(config);
 
-			expect(init).toThrowError(`Config port must be a number but got '10' with type 'string'`);
+			const result = await init();
+			expect(result[1].message).toEqual(`Config port must be a number but got '10' with type 'string'`);
 		});
 
-		it(`invalid port format`, () => {
+		it(`invalid port format`, async () => {
 			config.port = 0;
 			saveConfig(config);
 
-			expect(init).toThrowError(`Config port '0' is invalid`);
+			const result = await init();
+			expect(result[1].message).toEqual(`Config port '0' is invalid`);
 		});
 	});
 
 	describe("JSON content parse error handling", () => {
 		xit(`package.json content invalid`, () => {});
 
-		it(`main.config.json content invalid`, () => {
+		it(`main.config.json content invalid`, async () => {
 			writeFileSync(CONFIG_FILE_PATH, `not json`, "utf-8");
-			expect(init).toThrowError(`main.config.json content JSON parse error`);
+
+			const result = await init();
+			expect(result[1].message).toEqual(`main.config.json content JSON parse error`);
 		});
 	});
 
 	describe("Error handling when files is missing", () => {
-		it(`package.json is missing`, () => {
+		it(`package.json is missing`, async () => {
 			renameSync(PACKAGE_FILE_PATH, `${PACKAGE_FILE_PATH}-test`);
-			expect(init).toThrowError(`Package.json is missing`);
+			const result = await init();
+			expect(result[1].message).toEqual(`Package.json is missing`);
 			renameSync(`${PACKAGE_FILE_PATH}-test`, PACKAGE_FILE_PATH);
 		});
 
-		it(`main.config.json is missing`, () => {
+		it(`main.config.json is missing`, async () => {
 			removeFiles();
-			expect(init).toThrowError(`main.config.json is missing`);
+			const result = await init();
+			expect(result[1].message).toEqual(`main.config.json is missing`);
 		});
 	});
 });
