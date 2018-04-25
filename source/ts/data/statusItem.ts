@@ -15,6 +15,7 @@ export enum StatusItemCode {
 	TEMP_SUCCESS = 32,
 
 	TOKEN_ERROR = 13,
+	TOKEN_WARN = 23,
 	TOKEN_SUCCESS = 33
 }
 

@@ -20,8 +20,8 @@ class SequencyController {
 	private PROCESS: (TProcess | TProcessAsync)[] = [
 		dummy.bind(null, StatusItemCode.LAUNCH) as TProcess,
 		Config.init.bind(Config) as TProcess,
-		this.checkTempFile.bind(this) as TProcess
-		// Token.init.bind(Token) as () => Promise<StatusItem>,
+		this.checkTempFile.bind(this) as TProcess,
+		Token.init.bind(Token) as TProcess
 		// Proccess.stopMainProgramm.bind(Proccess) as () => Promise<StatusItem>,
 		// dummy.bind(null, Steps.GIT) as () => StatusItem,
 		// dummy.bind(null, Steps.NPM) as () => StatusItem,

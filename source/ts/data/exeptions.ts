@@ -17,7 +17,11 @@ export enum CustomErrorCode {
 	STEP_OVER = "19",
 	TEMP_WRITE = "20",
 	TEMP_MISSING = "21",
-	TEMP_STEP_INVALID = "22"
+	TEMP_STEP_INVALID = "22",
+	TOKEN_REQUEST = "23",
+	TOKEN_PARSE = "24",
+	TOKEN_SAVE = "25",
+	TOKEN_READ = "26"
 }
 
 interface IDataError {
@@ -74,6 +78,20 @@ const error: { [code in CustomErrorCode]: IDataError } = {
 	[CODE.TEMP_STEP_INVALID]: {
 		type: TYPE.WARN,
 		message: `Status step from temp file invalid: {sss}`
+	},
+	[CODE.TOKEN_REQUEST]: {
+		type: TYPE.WARN,
+		message: `Server request rejected: {sss}`
+	},
+	[CODE.TOKEN_PARSE]: {
+		message: `Token parse error: {sss}`
+	},
+	[CODE.TOKEN_SAVE]: {
+		type: TYPE.WARN,
+		message: `Token save error: {sss}`
+	},
+	[CODE.TOKEN_READ]: {
+		message: `Token read error: {sss}`
 	}
 };
 
