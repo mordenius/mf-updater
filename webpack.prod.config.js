@@ -1,5 +1,4 @@
 const fs = require("fs");
-const path = require("path");
 
 const nodeModules = {};
 fs
@@ -23,7 +22,7 @@ module.exports = {
 	},
 	module: {
 		rules: [{
-			test: /\.tsx?$/,
+			test: /\.ts?$/,
 			exclude: /\/node_modules\//,
 			use: ["babel-loader", "ts-loader"]
 		}]

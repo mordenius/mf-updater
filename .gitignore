@@ -1,12 +1,12 @@
-/.idea/*
+/.idea/
 *.iml
 /.vscode/
 
-/node_modules/*
-/lib/*
-/config/*
-/temp/*
-/log/*
+/node_modules/
+/lib/
+/config/
+/temp/
+/log/
 /build/
 /docs/
 

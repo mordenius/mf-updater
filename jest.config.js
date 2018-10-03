@@ -1,12 +1,7 @@
 module.exports = {
 	transform: {
-		"^.+\\.tsx?$": "ts-jest"
+		"^.+\\.ts?$": "ts-jest"
 	},
-	testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-	moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"]
-	// globals: {
-	// 	"ts-jest": {
-	// 		useBabelrc: true
-	// 	}
-	// }
+	testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.(js?|ts?)$",
+	moduleFileExtensions: ["ts", "js"]
 };
